@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUrl } from '../features/menu/menuSlice';
 import { updateUrl } from '../features/menu/menuSlice';
+import { fetchMediaUrls } from '../features/media/container/containerSlice';
 
 export default function Search() {
-    const [query, setQuery] = useState();
+    const [query, setQuery] = useState('');
     const dispatch = useDispatch();
+    const url = useSelector(selectUrl);
+
+    useEffect(() => {
+        dispatch(updateUrl(query));
+    }, [query])
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -12,7 +19,7 @@ export default function Search() {
         if (query.length === 0) {
             return;
         }
-        dispatch(updateUrl(e.target.value));
+        dispatch(fetchMediaUrls(url));
     }
 
     return (
@@ -22,7 +29,7 @@ export default function Search() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             />
-            <button>Search</button>
+            <button type='submit'>Search</button>
         </form>
     )
 }
