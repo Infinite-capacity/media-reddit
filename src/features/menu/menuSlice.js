@@ -1,4 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+
+export const updateUrl = createAsyncThunk(
+    'menu/updateUrl',
+    async (query, thunkApi) => {
+        return query;
+    }
+)
+
+export const updateSort = createAsyncThunk(
+    'menu/updateSort',
+    async (order, thunkApi) => {
+        return order;
+    }
+)
 
 //define slice
 const options = {
@@ -6,16 +21,35 @@ const options = {
     initialState: {
         sort: `new`,
         subReddit: '',
-        currentUrl: ``,
+        currentUrl: '',
+        loading: false
     },
-    reducers: {
-        updateSort: (state, action) => {
-            state.sort = action.payload;
-            state.currentUrl = `https://www.reddit.com/${state.subReddit}/${state.sort}.json`
+    reducers: {},
+    extraReducers: {
+
+        [updateUrl.pending]: (state) => {
+            state.loading = true;
         },
-        updateUrl: (state, action) => {
+        [updateUrl.fulfilled]: (state, action) => {
+            state.loading = false;
             state.subReddit = action.payload;
-            state.currentUrl = `https://www.reddit.com/${action.payload}/${state.sort}.json`
+            state.currentUrl = `https://api.reddit.com/${action.payload}/${state.sort}`;
+        },
+        [updateUrl.rejected]: (state) => {
+            state.loading = false;
+        },
+
+
+        [updateSort.pending]: (state) => {
+            state.loading = true;
+        },
+        [updateSort.fulfilled]: (state, action) => {
+            state.sort = action.payload;
+            // state.currentUrl = `https://api.reddit.com/${state.subReddit}/${action.payload}.json`;
+            state.loading = false;
+        },
+        [updateSort.rejected]: (state) => {
+            state.loading = false;
         }
     }
 }
@@ -24,7 +58,8 @@ const options = {
 const menuSlice = createSlice(options);
 //export reducer
 export default menuSlice.reducer;
-//export actions
-export const { updateSort, updateUrl} = menuSlice.actions;
+
 //export selector
 export const selectUrl = state => state.menu.currentUrl;
+export const selectSub = state => state.menu.subReddit;
+export const selectSort = state => state.menu.sort;
