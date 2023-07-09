@@ -53,6 +53,8 @@ const options = {
                     //make all requests https, fall through
                     case !url.includes('https'):
                         url = "https" + url.slice(4,0);
+                    // case url.includes('https'):
+                    //     url = "http" + url.slice(5,0);
 
                     //check for duplicates
                     case urls.includes(url):

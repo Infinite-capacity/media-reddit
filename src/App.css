@@ -256,6 +256,7 @@ button, select {
 option {
   color: #ADE8F4;
   background-color: #012A4A;
+  border-radius: 15px;
 }
 
 .buttonsBar {
@@ -357,8 +358,8 @@ option {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 50px;
+  height: 30px;
 }
 
 /* Hide default HTML checkbox */
@@ -387,8 +388,8 @@ option {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 20px;
+  width: 20px;
   left: 4px;
   bottom: 4px;
   background-color: #919191;
@@ -405,9 +406,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
   background-color: #ADE8F4;
 }
 

@@ -11,11 +11,11 @@ export default function Card(props) {
     if(imageUrl.includes('.mp4')){
       try{
         setIsLoading(true);
-        const res = await fetch(imageUrl, {mode: 'cors'});
-        const imageBlob = await res.blob();
-        const imageObjectURL = URL.createObjectURL(imageBlob);
+        const res = await fetch(imageUrl);
+        // const imageBlob = await res.blob();
+        // const imageObjectURL = URL.createObjectURL(imageBlob);
         setIsLoading(false);
-        setImg(imageObjectURL);
+        setImg(res);
         setIsVideo(true);
       } catch(e) {
         console.error(e);
@@ -23,11 +23,11 @@ export default function Card(props) {
     } else{
       try{
         setIsLoading(true);
-        const res = await fetch(imageUrl, {mode: 'cors'});
-        const imageBlob = await res.blob();
-        const imageObjectURL = URL.createObjectURL(imageBlob);
+        const res = await fetch(imageUrl);
+        // const imageBlob = await res.blob();
+        // const imageObjectURL = URL.createObjectURL(imageBlob);
         setIsLoading(false);
-        setImg(imageObjectURL);
+        setImg(res);
         setIsVideo(false);
       } catch(e){
         console.error(e);
