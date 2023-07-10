@@ -4,18 +4,22 @@ export default function Card(props) {
   const [img, setImg] = useState('');
   const [isVideo, setIsVideo] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const imageUrl = props.url;
+  let imageUrl = props.url;
+
+  // if(imageUrl.includes('i.redd.it')){
+  //   const splitUrl = imageUrl.split('/')
+  //   imageUrl = '/' + splitUrl[3];
+  // }
 
 
   const fetchImage = async () => {
     if(imageUrl.includes('.mp4')){
       try{
         setIsLoading(true);
-        const res = await fetch(imageUrl);
-        // const imageBlob = await res.blob();
-        // const imageObjectURL = URL.createObjectURL(imageBlob);
+        // const res = await fetch(imageUrl);
+        setImg(imageUrl);
         setIsLoading(false);
-        setImg(res);
+        
         setIsVideo(true);
       } catch(e) {
         console.error(e);
@@ -23,11 +27,10 @@ export default function Card(props) {
     } else{
       try{
         setIsLoading(true);
-        const res = await fetch(imageUrl);
-        // const imageBlob = await res.blob();
-        // const imageObjectURL = URL.createObjectURL(imageBlob);
+        // const res = await fetch(imageUrl);
+        setImg(imageUrl);
         setIsLoading(false);
-        setImg(res);
+        
         setIsVideo(false);
       } catch(e){
         console.error(e);
