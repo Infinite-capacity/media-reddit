@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUrl, updateSort, updateUrl } from './menuSlice';
+import { updateSort, updateUrl } from './menuSlice';
 import { selectQuery, getSuggestions, updateQuery, clearSuggestions, selectNsfw} from './searchSlice';
 import Suggestion from './Suggestion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +14,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function Search() {
     const dispatch = useDispatch();
-    const url = useSelector(selectUrl);
     const query = useSelector(selectQuery);
     const nsfw = useSelector(selectNsfw);
 
@@ -60,7 +59,7 @@ export default function Search() {
         if (query.length > 0){
             dispatch(getSuggestions(query + nsfw));
         }
-    }, [query])
+    }, [query, nsfw, dispatch])
 
     return (
         <form onSubmit={handleSubmit} autoComplete='off'>

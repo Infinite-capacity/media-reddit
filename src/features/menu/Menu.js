@@ -14,7 +14,7 @@ export default function Menu() {
 
     useEffect(()=>{
         if(url) dispatch(fetchMediaUrls(url));
-    }, [url])
+    }, [url, dispatch])
 
     useEffect(()=>{
         const topButton = document.getElementById('top');
@@ -37,6 +37,8 @@ export default function Menu() {
                 hotButton.style['border'] = 'none';
                 topButton.style['border'] = '1px solid #ADE8F4';
                 break;
+                default:
+                    break;
             }
         }
         

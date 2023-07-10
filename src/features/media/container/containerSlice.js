@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 
 
 export const fetchMediaUrls = createAsyncThunk(
@@ -49,21 +48,20 @@ const options = {
                 let url = child.data.url;
                 const entry = {};
                 
+                /* eslint-disable no-fallthrough */
                 switch (true) {
-                    //make all requests https, fall through
+                    //make all requests https
                     case !url.includes('https'):
                         url = "https" + url.slice(4,0);
-                    // case url.includes('https'):
-                    //     url = "http" + url.slice(5,0);
-
+                        // break omitted
                     //check for duplicates
                     case urls.includes(url):
                         break;
 
-                    //add url to test array, fall through
+                    //add url to test array
                     case url:
                         urls.push(url);
-
+                        //break omitted
                     //imgur
                     case url.includes('imgur.com'):
                         switch(true)
@@ -111,6 +109,7 @@ const options = {
                     default:
                         break;
                 }
+                /* eslint-enable no-fallthrough */
             })
         },
         [fetchMediaUrls.rejected]: (state, action) => {
@@ -135,20 +134,20 @@ const options = {
                 let name = child.data.name;
                 let url = child.data.url;
                 const entry = {};
-                
+                /* eslint-enable no-fallthrough */
                 switch (true) {
-                    //make all requests https, fall through
+                    //make all requests https
                     case !url.includes('https'):
                         url = "https" + url.slice(4,0);
-
+                        // break omitted
                     //check for duplicates
                     case urls.includes(url):
                         break;
 
-                    //add url to test array, fall through
+                    //add url to test array
                     case url:
                         urls.push(url);
-
+                        //break omitted
                     //imgur
                     case url.includes('imgur.com'):
                         switch(true)
@@ -189,6 +188,7 @@ const options = {
                             entry.url = url;
                             entry.name = name;
                             state.mediaUrls.push(entry);
+                            return;
                         });
                         break;
                     
@@ -196,6 +196,7 @@ const options = {
                     default:
                         break;
                 }
+                /* eslint-enable no-fallthrough */
             })          
         },
         [loadMore.rejected]: (state, action) => {

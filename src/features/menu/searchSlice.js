@@ -18,6 +18,7 @@ export const getSuggestions = createAsyncThunk(
             entries.push(entry);
             i ++;
             }
+            return;
         })
         return entries;
     }

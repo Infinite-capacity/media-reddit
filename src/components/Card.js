@@ -4,7 +4,7 @@ export default function Card(props) {
   const [img, setImg] = useState('');
   const [isVideo, setIsVideo] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  let imageUrl = props.url;
+  const imageUrl = props.url;
 
   // if(imageUrl.includes('i.redd.it')){
   //   const splitUrl = imageUrl.split('/')
@@ -61,11 +61,11 @@ export default function Card(props) {
 
   useEffect(() => {
     fetchImage();
-  }, [imageUrl]);
+  }, [imageUrl, fetchImage]);
 
   return (
     <div className='myImageContainer' onClick={displayFull} >
-      {isLoading? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> : isVideo ? <video preload="auto" autoPlay="autoplay" muted="muted" loop="loop"><source src={img} type="video/mp4"/></video> : <img src={img}/>}
+      {isLoading? <div className="lds-ring"><div></div><div></div><div></div><div></div></div> : isVideo ? <video preload="auto" autoPlay="autoplay" muted="muted" loop="loop"><source src={img} type="video/mp4"/></video> : <img src={img} alt={imageUrl}/>}
     </div>
   );
 }
