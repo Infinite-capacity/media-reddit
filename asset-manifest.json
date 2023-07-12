@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/media-reddit/static/css/main.855df619.css",
-    "main.js": "/media-reddit/static/js/main.2d9d7b89.js",
-    "static/js/787.22f522e0.chunk.js": "/media-reddit/static/js/787.22f522e0.chunk.js",
-    "index.html": "/media-reddit/index.html",
-    "main.855df619.css.map": "/media-reddit/static/css/main.855df619.css.map",
-    "main.2d9d7b89.js.map": "/media-reddit/static/js/main.2d9d7b89.js.map",
-    "787.22f522e0.chunk.js.map": "/media-reddit/static/js/787.22f522e0.chunk.js.map"
+    "main.css": "/static/css/main.855df619.css",
+    "main.js": "/static/js/main.425b4eca.js",
+    "static/js/787.22f522e0.chunk.js": "/static/js/787.22f522e0.chunk.js",
+    "index.html": "/index.html",
+    "main.855df619.css.map": "/static/css/main.855df619.css.map",
+    "main.425b4eca.js.map": "/static/js/main.425b4eca.js.map",
+    "787.22f522e0.chunk.js.map": "/static/js/787.22f522e0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.855df619.css",
-    "static/js/main.2d9d7b89.js"
+    "static/js/main.425b4eca.js"
   ]
 }
