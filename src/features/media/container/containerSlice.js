@@ -47,21 +47,16 @@ const options = {
                 let name = child.data.name;
                 let url = child.data.url;
                 const entry = {};
-                
-                /* eslint-disable no-fallthrough */
+                console.log(`trying: ${url}`);
+                if(!url.includes('https')){
+                    url = "https" + url.slice(4);
+                    console.log(`https applied ${url}`);
+                }
                 switch (true) {
-                    //make all requests https
-                    case !url.includes('https'):
-                        url = "https" + url.slice(4,0);
-                        // break omitted
                     //check for duplicates
                     case urls.includes(url):
+                        console.log('duplicate found');
                         break;
-
-                    //add url to test array
-                    case url:
-                        urls.push(url);
-                        //break omitted
                     //imgur
                     case url.includes('imgur.com'):
                         switch(true)
@@ -88,7 +83,8 @@ const options = {
                         break;
 
                     //reddit
-                    case url.includes('i.redd') && (url.includes('.jpg') || url.includes('.png') || url.includes('.gif')):
+                    case url.includes('i.redd') :
+                        // && (url.includes('.jpg') || url.includes('.png') || url.includes('.gif'))
                         entry.url = url;
                         entry.name = name;
                         state.mediaUrls.push(entry);
@@ -109,7 +105,7 @@ const options = {
                     default:
                         break;
                 }
-                /* eslint-enable no-fallthrough */
+                urls.push(url);
             })
         },
         [fetchMediaUrls.rejected]: (state, action) => {
@@ -134,20 +130,15 @@ const options = {
                 let name = child.data.name;
                 let url = child.data.url;
                 const entry = {};
-                /* eslint-enable no-fallthrough */
+                if(!url.includes('https')){
+                    url = "https" + url.slice(4);
+                    console.log(`https applied ${url}`);
+                }
                 switch (true) {
-                    //make all requests https
-                    case !url.includes('https'):
-                        url = "https" + url.slice(4,0);
-                        // break omitted
                     //check for duplicates
                     case urls.includes(url):
+                        console.log('duplicate found');
                         break;
-
-                    //add url to test array
-                    case url:
-                        urls.push(url);
-                        //break omitted
                     //imgur
                     case url.includes('imgur.com'):
                         switch(true)
@@ -196,7 +187,7 @@ const options = {
                     default:
                         break;
                 }
-                /* eslint-enable no-fallthrough */
+                urls.push(url);
             })          
         },
         [loadMore.rejected]: (state, action) => {

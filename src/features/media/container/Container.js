@@ -2,19 +2,28 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMediaUrls, selectIsLoading, selectAfter, loadMore } from './containerSlice';
 import Card from '../../../components/Card';
-import { selectUrl } from '../../menu/menuSlice';
+import { selectSort, selectUrl } from '../../menu/menuSlice';
 
 
 
 export default function Container() {
     const mediaUrls = useSelector(selectMediaUrls); 
     const isLoading = useSelector(selectIsLoading);
-    const newUrl = useSelector(selectUrl) + '?after=' +useSelector(selectAfter);
+    const sort = useSelector(selectSort);
+    const after = useSelector(selectAfter);
+    const url = useSelector(selectUrl);
+    let newUrl = '';
+    if(sort.includes('top')){
+        newUrl = url + '&after=' + after; 
+    } else {
+        newUrl = url + '?after=' + after;
+    }
     const dispatch = useDispatch();
     
     const handleLoadClick = (e) => {
         e.preventDefault();
         dispatch(loadMore(newUrl));
+        console.log(`newUrl: ${newUrl}`)
     }
 
 
