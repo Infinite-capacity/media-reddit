@@ -47,15 +47,13 @@ const options = {
                 let name = child.data.name;
                 let url = child.data.url;
                 const entry = {};
-                console.log(`trying: ${url}`);
                 if(!url.includes('https')){
                     url = "https" + url.slice(4);
-                    console.log(`https applied ${url}`);
                 }
+
                 switch (true) {
                     //check for duplicates
                     case urls.includes(url):
-                        console.log('duplicate found');
                         break;
                     //imgur
                     case url.includes('imgur.com'):
@@ -64,8 +62,7 @@ const options = {
                             case url.includes('imgur.com/a') && (!url.includes('.jpg')|| !url.includes('.png') || !url.includes('.jpeg')):
                                 break;
                             case url.includes('.gifv'):
-                                url = url.slice(0,-4) + 'mp4';
-                                entry.url = url;
+                                entry.url = url.slice(0,-4) + 'mp4';
                                 entry.name = name;
                                 state.mediaUrls.push(entry);
                                 break;
@@ -75,8 +72,7 @@ const options = {
                                 state.mediaUrls.push(entry);
                                 break;
                             default:
-                                url = url.slice(0,8) +'i.' + url.slice(8) + '.jpg';
-                                entry.url = url;
+                                entry.url = url.slice(0,8) +'i.' + url.slice(8) + '.jpg';
                                 entry.name = name;
                                 state.mediaUrls.push(entry); 
                             }
@@ -132,12 +128,10 @@ const options = {
                 const entry = {};
                 if(!url.includes('https')){
                     url = "https" + url.slice(4);
-                    console.log(`https applied ${url}`);
                 }
                 switch (true) {
                     //check for duplicates
                     case urls.includes(url):
-                        console.log('duplicate found');
                         break;
                     //imgur
                     case url.includes('imgur.com'):
@@ -146,8 +140,7 @@ const options = {
                             case url.includes('imgur.com/a') && (!url.includes('.jpg')|| !url.includes('.png') || !url.includes('.jpeg')):
                                 break;
                             case url.includes('.gifv'):
-                                url = url.slice(0,-4) + 'mp4';
-                                entry.url = url;
+                                entry.url = url.slice(0,-4) + 'mp4';
                                 entry.name = name;
                                 state.mediaUrls.push(entry);
                                 break;
@@ -157,8 +150,7 @@ const options = {
                                 state.mediaUrls.push(entry);
                                 break;
                             default:
-                                url = url.slice(0,8) +'i.' + url.slice(8) + '.jpg';
-                                entry.url = url;
+                                entry.url = url.slice(0,8) +'i.' + url.slice(8) + '.jpg';
                                 entry.name = name;
                                 state.mediaUrls.push(entry); 
                             }

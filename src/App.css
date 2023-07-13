@@ -112,7 +112,7 @@ img, .ff-image, video {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 50vw;
+  width: 65vw;
   padding: 0;
 }
 
@@ -121,7 +121,7 @@ img, .ff-image, video {
   top: 20px;
   display: flex;
   flex-wrap: wrap;
-  width: 50vw;
+  width: 65vw;
   border-radius: 15px;
   border: 1px solid #ADE8F4;
   background-color: #012A4A;
@@ -139,7 +139,7 @@ img, .ff-image, video {
   min-height: 90px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: nowrap;
   padding: 0 10px;
   border-bottom: 3px solid #ADE8F4;
@@ -154,13 +154,13 @@ img, .ff-image, video {
 
 
 .menu form input {
-  width: 47vw;
+  width: 60vw;
   height: 45px;
   outline: none;
   border: none;
   background-color: #012A4A;
   color: #ADE8F4;
-  padding-left: 2vw;
+
 }
 
 .menu form input::placeholder{
@@ -185,14 +185,16 @@ img, .ff-image, video {
 }
 
 .titleContainer {
-  min-width: 20vw;
+  text-align: left;
+  min-width: 15vw;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
 }
 
 .titleContainer h5 {
   margin: 0;
+  margin-left: 5px;
   padding: 0 0 5px 0;
   color: #ADE8F4;
 }
@@ -205,11 +207,11 @@ img, .ff-image, video {
 
 .suggestions li{
   cursor: pointer;
-  width: 95%;
+  width: 100%;
   background-color: #012A4A;
   color: #ADE8F4;
   text-align: left;
-  padding: 5px 5%;
+  padding: 5px 4%;
 }
 .suggestions li:hover{
   background-color: #ADE8F4;
@@ -225,7 +227,7 @@ img, .ff-image, video {
   max-height: 200px;
   overflow: hidden;
   border-top: none;
-  width: 50vw;
+  width: 65vw;
 }
 
 .suggestions ul:first-child{
@@ -268,6 +270,8 @@ option {
 }
 
 .buttonsContainer {
+  display: flex;
+  flex-wrap: nowrap;
   background-color: #33415C;
   padding: 10px;
   border: 1px solid #ADE8F4;
@@ -306,6 +310,10 @@ option {
 .loading-button button {
   padding: 5px 10px;
   background-color: #012A4A;
+}
+
+#hidden-top-sort-option{
+  display: none;
 }
 
 /*Animated loading*/
@@ -382,7 +390,7 @@ option {
   background-color: #383838;
   -webkit-transition: .4s;
   transition: .4s;
-  z-index: 10;
+  z-index: 9;
 }
 
 .slider:before {
@@ -421,3 +429,11 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+
+/* Mobile */
+
+@media only screen and (max-width: 800px) {
+  img, .ff-image, video, .myImageContainer {
+    width: 75vw;
+  }
+} 

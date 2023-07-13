@@ -7,11 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
-//example search for subreddits
-//https://www.reddit.com/subreddits/search.json?q=fun&include_over_18=on
-
-
-
 export default function Search() {
     const dispatch = useDispatch();
     const query = useSelector(selectQuery);

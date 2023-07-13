@@ -23,11 +23,13 @@ export default function Menu() {
         if(sub){
             switch (true) {
                 case sort === 'new':
+                setShowOptions(false);
                 newButton.style['border'] = '1px solid #ADE8F4';
                 hotButton.style['border'] = 'none';
                 topButton.style['border'] = 'none';
                 break;
                 case sort === 'hot':
+                setShowOptions(false);
                 newButton.style['border'] = 'none';
                 hotButton.style['border'] = '1px solid #ADE8F4';
                 topButton.style['border'] = 'none';
@@ -47,7 +49,6 @@ export default function Menu() {
     const handleSortClick = (e) => {
         e.preventDefault();
         dispatch(updateSort(e.target.value));
-
         dispatch(updateUrl(sub));
         setShowOptions(false);
     }
@@ -71,14 +72,7 @@ export default function Menu() {
                 {sub && <h5>{sub}</h5>}
                 </div>
                 <Search />
-                <ToggleSwitch />
-                {/* <div className='toggle-container'>
-                <h5>NSFW</h5>
-                <label className="switch">
-                <input type="checkbox"/>
-                <span className="slider round"></span>
-                </label>
-                </div> */}
+                
             </div>
             <div className='buttonsBar'>
                 <div className='buttonsContainer'>
@@ -87,6 +81,7 @@ export default function Menu() {
                     <button onClick={topClick} id="top">Top</button>
                     {showOptions &&
                         <select  onChange={handleTopSortChange} >
+                            <option value ='' id='hidden-top-sort-option' ></option>
                             <option value="top/?t=day">Day</option>
                             <option value="top/?t=week">Week</option>
                             <option value="top/?t=month">Month</option>
@@ -94,6 +89,7 @@ export default function Menu() {
                             <option value="top/?t=all">All-Time</option>
                         </select>
                     }
+                    <ToggleSwitch />
                 </div>
             </div>
         </div>
