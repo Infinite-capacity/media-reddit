@@ -361,6 +361,7 @@ option {
   justify-content: center;
   width: 15vw;
   max-width: 150px;
+  
 }
 
 .switch {
@@ -368,6 +369,7 @@ option {
   display: inline-block;
   width: 50px;
   height: 30px;
+  
 }
 
 /* Hide default HTML checkbox */
@@ -375,6 +377,7 @@ option {
   opacity: 0;
   width: 0;
   height: 0;
+  
 }
 
 /* The slider */
@@ -391,6 +394,7 @@ option {
   -webkit-transition: .4s;
   transition: .4s;
   z-index: 9;
+  
 }
 
 .slider:before {
@@ -403,10 +407,12 @@ option {
   background-color: #919191;
   -webkit-transition: .4s;
   transition: .4s;
+  
 }
 
 input:checked + .slider {
   background-color: #012A4A;
+  
 }
 
 input:focus + .slider {
@@ -418,6 +424,7 @@ input:checked + .slider:before {
   -ms-transform: translateX(22px);
   transform: translateX(22px);
   background-color: #ADE8F4;
+  
 }
 
 /* Rounded sliders */
@@ -436,4 +443,33 @@ input:checked + .slider:before {
   img, .ff-image, video, .myImageContainer {
     width: 75vw;
   }
-} 
+  .titleContainer {
+    width: 10vw;
+  }
+  .searchBar {
+    justify-content: space-between;
+    margin-right: 0;
+  }
+
+  .buttonsBar {
+    width: 100%;
+  }
+
+  .buttonsBar button{
+    padding: 5px;
+    margin: 5px;
+    font-size: 20px;
+  }
+
+  .toggle-container {
+    width: 100px;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
+    background-color: #ADE8F4;
+    
+  }
+}
