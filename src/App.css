@@ -444,11 +444,32 @@ input:checked + .slider:before {
     width: 75vw;
   }
   .titleContainer {
-    width: 10vw;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+  .titleContainer h1 {
+   max-width: 70%;
+    font-size: 25px;
+  }
+  .titleContainer h5 {
+    width: 20%;
   }
   .searchBar {
+    display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
     margin-right: 0;
+    height: 100px;
+  }
+
+  .searchInput {
+    top: 47px;
+    width: 99%;
+    left: 0;
   }
 
   .buttonsBar {
@@ -472,4 +493,6 @@ input:checked + .slider:before {
     background-color: #ADE8F4;
     
   }
+
+  .App {}
 }
